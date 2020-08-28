@@ -4,7 +4,7 @@ require 'net/http'
 class CuisineInspoDishes::API
     @@domain = "https://api.spoonacular.com"
     @@base_path = "/recipes/complexSearch"
-    @@api_key = "3dfb1e868fc74aec8c2bcf0cafb44f14"
+    @@api_key = "5f12f9346ce948f8a2300eaa13f1d683"
     @@cuisine_type = "Italian"
     @@results_size = 10
 
@@ -14,7 +14,12 @@ class CuisineInspoDishes::API
         })
 
         dishes = resp["results"]
-         #puts dishes
-        CuisineInspoDishes::Dishes.new_dishes_collection(dishes)
+        #  puts resp
+        if resp["status"] != 'failure'
+            CuisineInspoDishes::Dishes.new_dishes_collection(dishes)
+        else
+            puts resp.message
+        end
+        
     end
 end
