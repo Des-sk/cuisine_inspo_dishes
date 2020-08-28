@@ -7,13 +7,23 @@ class CuisineInspoDishes::Cli
 
     def call
         puts "Hi, and welcome to the Cuisine Inspo Dishes cli"
-            while @input != "Exit"
-                list_cuisines
-                get_user_input
-                validate(@input) 
-                # list_dishes(@input)          
-            end
-            goodbye
+        list_cuisines
+        while @input != "Exit" 
+            options
+            get_user_input
+            validate(@input)
+            # options
+            # get_user_input
+            # list_dishes(@input)          
+        end
+        goodbye
+    end
+
+    def options
+        puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+        # when "cuisine"
+            # list_cuisines
+        # end
     end
 
     def get_user_input 
@@ -21,9 +31,9 @@ class CuisineInspoDishes::Cli
     end
 
     def list_cuisines
-        puts "Here is a list of diferente cuisisnes from around the world"
+        puts "Here is a list of different cuisines from around the world"
         CuisineInspoDishes::Cuisine.show_cuisines();    
-        puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+        # puts "Enter a cuisine style to get some inspiration dishes or type Exit"
     end
 
     def list_dishes(cuisine)
@@ -31,8 +41,25 @@ class CuisineInspoDishes::Cli
     end 
 
     def validate(cuisine)
-        CuisineInspoDishes::Cuisine.validate_cuisine(cuisine);
+        if cuisine != "Exit" && cuisine != "cuisine"
+            CuisineInspoDishes::Cuisine.validate_cuisine(cuisine);
+        end
+
+        if cuisine == "cuisine"
+            list_cuisines
+        end
     end 
+
+
+    def goodbye
+        puts "Get Coocking!!!"
+    end
+
+
+
+
+
+
 
     # def menu
         

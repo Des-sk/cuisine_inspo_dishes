@@ -1,10 +1,10 @@
 
 class CuisineInspoDishes::Dishes
-    # @@dishArr = []
+    #@@dishArr = []
 
     def self.new_dishes_collection(dishes)
         dishes.each do |dish|
-            # @@dishArr << dish["title"]
+            #@@dishArr << dish["title"]
             puts dish["title"]
         end 
         # puts @@dishArr
