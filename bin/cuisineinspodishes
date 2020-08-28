@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/cuisine_inspo_dishes.rb"
+
+CuisineInspoDishes::Cli.new.call
+
+
