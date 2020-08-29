@@ -2,11 +2,15 @@
 class CuisineInspoDishes::Dishes
     #@@dishArr = []
 
+    # attr_accessor
+
     def self.new_dishes_collection(dishes)
+        @dishes_array = []
         dishes.each do |dish|
-            #@@dishArr << dish["title"]
-            puts dish["title"]
+            @dishes_array << dish["title"]
+            # puts dish["title"]
         end 
+        @dishes_array
         # puts @@dishArr
 
     end   

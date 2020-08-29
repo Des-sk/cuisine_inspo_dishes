@@ -11,10 +11,12 @@ class CuisineInspoDishes::Cuisine
 
     def self.validate_cuisine(input)
         if @@cuisines.index input.downcase
-            CuisineInspoDishes::API.get_dishes(input);
-         else
-             puts "Sorry! Cuisine not supported. Type cuisines to see the supported cuisines or type Exit."
-        end
+            true
+            #CuisineInspoDishes::A.get_dishes(input);
+        else
+            false
+        #      puts "Sorry! Cuisine not supported. Type cuisines to see the supported cuisines or type Exit."
+         end
     end
 end
 

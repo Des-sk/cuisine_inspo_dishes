@@ -8,8 +8,11 @@ class CuisineInspoDishes::Cli
     def call
         puts "Hi, and welcome to the Cuisine Inspo Dishes cli"
         list_cuisines
+        puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+
         while @input != "Exit" 
-            options
+            #puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+            #options
             get_user_input
             validate(@input)
             # options
@@ -19,12 +22,12 @@ class CuisineInspoDishes::Cli
         goodbye
     end
 
-    def options
-        puts "Enter a cuisine style to get some inspiration dishes or type Exit"
-        # when "cuisine"
+    # def options
+    #     puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+    #     # when "cuisine"
             # list_cuisines
         # end
-    end
+    #end
 
     def get_user_input 
         @input = gets.strip
@@ -37,18 +40,40 @@ class CuisineInspoDishes::Cli
     end
 
     def list_dishes(cuisine)
+        puts "Enter a cuisine style to get some inspiration dishes or type Exit"
          CuisineInspoDishes::API.get_dishes(cuisine);
+        
     end 
 
     def validate(cuisine)
-        if cuisine != "Exit" && cuisine != "cuisine"
-            CuisineInspoDishes::Cuisine.validate_cuisine(cuisine);
-        end
+        is_validated = CuisineInspoDishes::Cuisine.validate_cuisine(cuisine);
+        if cuisine != "Exit" && cuisine != "cuisine" && is_validated == true
+            # CuisineInspoDishes::Cuisine.validate_cuisine(cuisine);
+        
+            dishes_response = CuisineInspoDishes::API.new(cuisine)
+            dishes = dishes_response.get_dishes()
+            
+            dishes_array = CuisineInspoDishes::Dishes.new_dishes_collection(dishes)
+            puts dishes_array
+            
+            
+            
+            
+            #TODO: loop with each over array and print
+            # dishes_array.each do |dish|   
+            #     puts dish["title"]
+     
+        elsif cuisine == "cuisine"
+                list_cuisines
+             puts "Enter a cuisine style to get some inspiration dishes or type Exit"
+        else
+             puts "Sorry! Cuisine not supported. Type cuisines to see the supported cuisines or type Exit."
+         end
+    end
 
-        if cuisine == "cuisine"
-            list_cuisines
-        end
-    end 
+    #     
+    #     end
+    # end 
 
 
     def goodbye
