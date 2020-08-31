@@ -1,5 +1,4 @@
 require 'net/http'
-#require_relative "../lib/cuisine_inspo_dishes/cli"
 
 class CuisineInspoDishes::API
     attr_accessor :cuisine

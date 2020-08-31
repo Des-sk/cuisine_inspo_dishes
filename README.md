@@ -2,10 +2,12 @@
 
 This is a CLI data gem project test for the 7/6 Cohort at the Flatiron School!
 
+This CLI app will help caterers and chefs find easily and fast, dishes based on different cuisine styles from around the world. The user is given a list of cuisines and just needs type the one that it wants to search and the program will give 10 dishes for inspiration. It uses HTTParty to retrieve data from the Spoonacular API https://spoonacular.com/food-api. 
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
-
 ```ruby
 gem 'cuisine_inspo_dishes'
 ```
@@ -18,9 +20,6 @@ Or install it yourself as:
 
     $ gem install cuisine_inspo_dishes
 
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
